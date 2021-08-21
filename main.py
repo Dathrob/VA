@@ -3,17 +3,19 @@ import pyttsx3
 from googletrans import Translator, constants
 import pywhatkit
 import os
+from playsound import playsound
 translator = Translator()
 listner = sr.Recognizer()
 engine = pyttsx3.init()
-engine.setProperty('rate', 100)
-
+engine.setProperty('rate', 120)
+#engine.say("Hello  misganaw  how  can  i  help  you")
+#engine.runAndWait()
+playsound('synthesize.mp3')
 def search(query):
     pywhatkit.search(query)
     starter()
 def open(application):
     engine.say("opening"+application)
-    engine.setProperty('rate',125)
     engine.runAndWait()
     os.system(application)
     starter()
@@ -21,6 +23,7 @@ def open(application):
 def starter():
     try:
         with sr.Microphone() as source:
+           
             print("listning")
             voice = listner.listen(source,phrase_time_limit=4)
             command = listner.recognize_google(voice,language="am-ET")
