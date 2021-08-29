@@ -30,10 +30,7 @@ def open(application):
 
 
 def youtube(item):
-    
     webbrowser.get('google-chrome').open("https://www.youtube.com/results?search_query="+item)
-
-
 
 def starter():
     try:
@@ -46,10 +43,11 @@ def starter():
             if(("ቪዲዮ" in command)or("video" in command)):
                 print("video found")
                 query = command.replace("ቪዲዮ","")
-                youtube(command)
+                query = command.replace("video","")
+                youtube(query)
             elif(("ፍለጋ" in command) or ("በመፈለግ ላይ" in command) or ("ፈልግ" in command)):
                 query = command.replace("ፈልግ"," ")
-                searcher(command)
+                searcher(query)
             elif(("ክፈት" in command) or ("ክፍት" in command) or ("ከፈተልኝ" in command) or("ከፍ ሲል" in command)):
                 application = command.replace("ክፈት","")
                 application = command.replace("ክፍት","")
@@ -67,6 +65,5 @@ def starter():
     except:
         engine.say("sorry command not found")
 
-    
-youtube("misge dathrob")
+starter()
 
