@@ -30,7 +30,8 @@ def open(application):
 
 
 def youtube(item):
-    webbrowser.get('google-chrome').open('https://www.youtube.com')
+    
+    webbrowser.get('google-chrome').open("https://www.youtube.com/results?search_query="+item)
 
 
 
@@ -65,7 +66,7 @@ def starter():
         
     except:
         engine.say("sorry command not found")
-def starter1():
+
     
-starter1()
+youtube("misge dathrob")
 
