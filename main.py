@@ -1,4 +1,5 @@
 import speech_recognition as sr
+import urllib.request
 import pyttsx3
 from googletrans import Translator, constants
 import pywhatkit
@@ -8,6 +9,10 @@ translator = Translator()
 listner = sr.Recognizer()
 engine = pyttsx3.init()
 playsound('synthesize.mp3')
+import webbrowser 
+
+
+
 def searcher(query):
     print("search is called")
     pywhatkit.search(query)
@@ -25,13 +30,14 @@ def open(application):
 
 
 def youtube(item):
-    pywhatkit.playonyt(item)
+    webbrowser.get('google-chrome').open('https://www.youtube.com')
 
 
 
 def starter():
     try:
         with sr.Microphone() as source:
+            
             print("listning")
             voice = listner.listen(source,phrase_time_limit=4)
             command = listner.recognize_google(voice,language="am-ET")
@@ -50,6 +56,7 @@ def starter():
                 application = command.replace("ከፍ ሲል","")
                 translation = translator.translate(application)
                 open_command = translation.text
+                print("tanslated text is "+open_command)
                 open(open_command)
             else:
                 playsound('synthesize (1).mp3')
@@ -58,6 +65,7 @@ def starter():
         
     except:
         engine.say("sorry command not found")
-
-starter()
+def starter1():
+    
+starter1()
 
